@@ -2,12 +2,12 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>speech-transcript2srt</groupId>
-	<artifactId>speech-transcript2srt</artifactId>
+	<groupId>speech-transcription2srt</groupId>
+	<artifactId>speech-transcription2srt</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>speech-transcript2srt</name>
+	<name>speech-transcription2srt</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
@@ -15,49 +15,15 @@
 	</properties>
 
 
-	<plugin>
-		<artifactId>maven-assembly-plugin</artifactId>
-		<configuration>
-			<archive>
-				<manifest>
-					<mainClass>com.your-package.Main</mainClass>
-				</manifest>
-				<manifestEntries>
-					<Class-Path>.</Class-Path>
-				</manifestEntries>
-			</archive>
-			<descriptorRefs>
-				<descriptorRef>jar-with-dependencies</descriptorRef>
-			</descriptorRefs>
-		</configuration>
-		<executions>
-			<execution>
-				<id>make-assembly</id> <!-- this is used for inheritance merges -->
-				<phase>package</phase> <!-- bind to the packaging phase -->
-				<goals>
-					<goal>single</goal>
-				</goals>
-			</execution>
-		</executions>
-	</plugin>
-	<build>
-		<resources>
-			<resource>
-				<directory>src/main/resources</directory>
-				<targetPath>${basedir}/target</targetPath>
-				<includes>
-					<include>log4j.properties</include>
-				</includes>
-			</resource>
-		</resources>
-	</build>
-	<dependencies>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
-			<scope>test</scope>
-		</dependency>
+  <dependencies>
+
+	<dependency>
+	      <groupId>junit</groupId>
+	      <artifactId>junit</artifactId>
+	      <version>4.8.1</version>
+	      <scope>test</scope>
+	</dependency>
+
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
