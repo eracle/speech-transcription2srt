@@ -1,15 +1,15 @@
 package it.synthema;
 
-import junit.framework.TestCase;
+import static org.junit.Assert.*;
 
-public class TranscriptionWordListTest extends TestCase {
+import org.junit.Test;
 
-	protected static void setUpBeforeClass() throws Exception {
-	}
+public class TranscriptedWordListTest {
 
+	@Test
 	public void testGetCharacterNumber() {
-		
-		TranscriptionWordList wl = new TranscriptionWordList();
+
+		TranscriptedWordList wl = new TranscriptedWordList();
 		wl.add(new TranscriptedWord("ciao", 10l, 20l));
 		wl.add(new TranscriptedWord("come",22l,30l));
 		wl.add(new TranscriptedWord("va",32l ,35l ));

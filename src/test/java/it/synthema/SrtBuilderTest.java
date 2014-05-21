@@ -5,10 +5,9 @@ import java.util.List;
 
 import junit.framework.TestCase;
 
-public class SrtBuilderTest extends TestCase {
+public class SrtBuilderTest {
 
-	protected static void setUpBeforeClass() throws Exception {
-	}
+	
 
 	/*
 	public void testBuild() {
@@ -19,7 +18,7 @@ public class SrtBuilderTest extends TestCase {
 		builder.build();
 	}
 	*/
-
+/*
 	private List<TranscriptedWord> gettestlist() {
 		List<TranscriptedWord> st = new ArrayList<TranscriptedWord>();
 		
@@ -33,7 +32,7 @@ public class SrtBuilderTest extends TestCase {
 		st.add(new TranscriptedWord("Thanks",72l,80l));
 		return st;
 	}
-	
+	*/
 	/*
 	public void testcomputeSilentIntervals(){
 		List<SilentInterval> silent = SrtBuilder.computeSilentIntervals(gettestlist());

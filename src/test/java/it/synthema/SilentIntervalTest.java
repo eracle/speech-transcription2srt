@@ -1,15 +1,16 @@
 package it.synthema;
 
+import static org.junit.Assert.*;
+
 import java.util.Arrays;
 
-import junit.framework.TestCase;
+import org.junit.Test;
 
-public class SilentIntervalTest extends TestCase {
+public class SilentIntervalTest {
 
-	protected static void setUpBeforeClass() throws Exception {
-	}
+	
 
-
+	@Test
 	public void testGetTimeInterval() {
 		TranscriptedWord tw1 = new TranscriptedWord("Ciao,", 0l,10l);
 		TranscriptedWord tw2 = new TranscriptedWord("Come", 30l,40l);
@@ -18,6 +19,7 @@ public class SilentIntervalTest extends TestCase {
 		assertTrue(ciao_come.getTimeInterval()==20l);
 	}
 
+	@Test
 	public void testCompareTo() {
 		TranscriptedWord tw1 = new TranscriptedWord("Ciao,", 0l,10l);
 		TranscriptedWord tw2 = new TranscriptedWord("Come", 30l,40l);

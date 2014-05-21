@@ -15,7 +15,7 @@ public class Srt {
 	 * It assumes that the transcriptionWordList is composed by a small amount of characters.
 	 * @param list
 	 */
-	public Srt(TranscriptionWordList list) {
+	public Srt(TranscriptedWordList list) {
 		//basic implementation that splits
 		//into two the list based on the number of words
 		//for better results it must be changed.

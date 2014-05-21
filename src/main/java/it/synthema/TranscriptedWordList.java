@@ -2,7 +2,7 @@ package it.synthema;
 
 import java.util.ArrayList;
 
-public class TranscriptionWordList extends ArrayList<TranscriptedWord>{
+public class TranscriptedWordList extends ArrayList<TranscriptedWord>{
 
 	/**
 	 * 

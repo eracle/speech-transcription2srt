@@ -18,9 +18,9 @@ public class Split {
 
 	private SilentInterval max_silent_interval;
 
-	private TranscriptionWordList left;
+	private TranscriptedWordList left;
 
-	private TranscriptionWordList right;
+	private TranscriptedWordList right;
 
 	private List<TranscriptedWord> all_words;
 
@@ -32,7 +32,7 @@ public class Split {
 	public Split(List<TranscriptedWord> list) {
 
 		this.all_words = list;
-		this.left = new TranscriptionWordList();
+		this.left = new TranscriptedWordList();
 
 		this.right = null;
 
@@ -75,18 +75,18 @@ public class Split {
 
 	}
 
-	public TranscriptionWordList getLeft() {
+	public TranscriptedWordList getLeft() {
 		return this.left;
 	}
 
-	public TranscriptionWordList getRight() {
+	public TranscriptedWordList getRight() {
 		if (this.right == null)
 			this.right = generateRightPart();
 		return this.right;
 	}
 
-	private TranscriptionWordList generateRightPart() {
-		TranscriptionWordList ret = new TranscriptionWordList();
+	private TranscriptedWordList generateRightPart() {
+		TranscriptedWordList ret = new TranscriptedWordList();
 		for (int i = this.left.size(); i < all_words.size(); i++) {
 			ret.add(all_words.get(i));
 		}

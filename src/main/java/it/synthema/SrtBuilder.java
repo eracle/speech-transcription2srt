@@ -32,7 +32,7 @@ public class SrtBuilder
 	 * @param max_characters_length 
 	 * @return Srt object from where the srt file can be build.
 	 */
-	public static Srt build(TranscriptionWordList list, long max_silent_threshold, int max_characters_length){
+	public static Srt build(TranscriptedWordList list, long max_silent_threshold, int max_characters_length){
 		//log.debug("Start Building");
 		
 		
@@ -52,7 +52,7 @@ public class SrtBuilder
 		}
 		
 		return null;
-		return merge(max_silent_interval.getLeft(),max_silent_interval.getRight());
+		//return merge(max_silent_interval.getLeft(),max_silent_interval.getRight());
 	}
 	
 	
