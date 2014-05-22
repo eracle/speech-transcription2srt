@@ -13,6 +13,14 @@ package it.synthema;
 public class SrtLine {
 	
 	private String firstLine;
+	public long getStart_time() {
+		return start_time;
+	}
+
+	public void setEnd_time(long end_time) {
+		this.end_time = end_time;
+	}
+
 	private String secondLine;
 	
 	private long start_time;
@@ -25,5 +33,15 @@ public class SrtLine {
 		this.secondLine = secondLine;
 		this.start_time = start_time;
 		this.end_time = end_time;
+	}
+
+	public long getEnd_time() {
+		return end_time;
+	}
+
+	@Override
+	public String toString() {
+		return "SrtLine [firstLine=" + firstLine + ", secondLine=" + secondLine
+				+ ", start_time=" + start_time + ", end_time=" + end_time + "]";
 	}
 }

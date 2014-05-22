@@ -3,6 +3,8 @@ package it.synthema;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 /**
  * Represent the split made from a transcription word sequence. It contains:<br>
  * - max silent interval;<br>
@@ -16,11 +18,14 @@ import java.util.List;
  */
 public class Split {
 
+	private final static Logger log = Logger.getLogger(Split.class.getName());
+
+	
 	private SilentInterval max_silent_interval;
 
-	private TranscriptedWordList left;
+	private List<TranscriptedWord> left;
 
-	private TranscriptedWordList right;
+	private List<TranscriptedWord> right;
 
 	private List<TranscriptedWord> all_words;
 
@@ -31,8 +36,10 @@ public class Split {
 	 */
 	public Split(List<TranscriptedWord> list) {
 
+		log.debug("Calling the Split constructor");
+		
 		this.all_words = list;
-		this.left = new TranscriptedWordList();
+		this.left = new ArrayList<TranscriptedWord>();
 
 		this.right = null;
 
@@ -75,18 +82,18 @@ public class Split {
 
 	}
 
-	public TranscriptedWordList getLeft() {
+	public List<TranscriptedWord> getLeft() {
 		return this.left;
 	}
 
-	public TranscriptedWordList getRight() {
+	public List<TranscriptedWord> getRight() {
 		if (this.right == null)
 			this.right = generateRightPart();
 		return this.right;
 	}
 
-	private TranscriptedWordList generateRightPart() {
-		TranscriptedWordList ret = new TranscriptedWordList();
+	private List<TranscriptedWord> generateRightPart() {
+		List<TranscriptedWord> ret = new ArrayList<TranscriptedWord>();
 		for (int i = this.left.size(); i < all_words.size(); i++) {
 			ret.add(all_words.get(i));
 		}

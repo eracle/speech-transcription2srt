@@ -2,13 +2,16 @@ package it.synthema;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Test;
 
 public class SplitTest {
 
-	private TranscriptedWordList getList() {
+	private List<TranscriptedWord> getList() {
 
-		TranscriptedWordList wl = new TranscriptedWordList();
+		List<TranscriptedWord> wl = new ArrayList<TranscriptedWord>();
 		wl.add(new TranscriptedWord("ciao", 10l, 20l));
 		wl.add(new TranscriptedWord("come", 22l, 30l));
 		wl.add(new TranscriptedWord("va", 32l, 35l));
@@ -26,7 +29,7 @@ public class SplitTest {
 	@Test
 	public void testSplit() {
 
-		TranscriptedWordList wl = this.getList();
+		List<TranscriptedWord> wl = this.getList();
 
 		Split s = new Split(wl);
 
@@ -36,11 +39,11 @@ public class SplitTest {
 	@Test
 	public void testGetLeft() {
 
-		TranscriptedWordList wl = this.getList();
+		List<TranscriptedWord> wl = this.getList();
 
 		Split s = new Split(wl);
 
-		TranscriptedWordList left = s.getLeft();
+		List<TranscriptedWord> left = s.getLeft();
 
 		assertTrue(left.get(0).word.equals("ciao"));
 		assertTrue(left.get(1).word.equals("come"));
@@ -49,11 +52,11 @@ public class SplitTest {
 
 	@Test
 	public void testGetRight() {
-		TranscriptedWordList wl = this.getList();
+		List<TranscriptedWord> wl = this.getList();
 
 		Split s = new Split(wl);
 
-		TranscriptedWordList left = s.getRight();
+		List<TranscriptedWord> left = s.getRight();
 
 		assertTrue(left.get(0).word.equals("bene"));
 		assertTrue(left.get(1).word.equals("grazie"));
@@ -66,7 +69,7 @@ public class SplitTest {
 	@Test
 	public void testGetMaxSilentInterval() {
 
-		TranscriptedWordList wl = this.getList();
+		List<TranscriptedWord> wl = this.getList();
 
 		Split s = new Split(wl);
 
