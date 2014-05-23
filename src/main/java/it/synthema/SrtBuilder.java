@@ -77,15 +77,16 @@ public class SrtBuilder {
 			ret_lines.add(lines1.get(i));
 		}
 
+
 		// setting the new ending time of the last srt line of srt1
 		SrtLine last_line = lines1.get(lines1.size() - 1);
-		long first_line_start_time = lines1.get(0).getStart_time() - 2;
+		
 
-		long end_last_srt_line_time = last_line.getEnd_time();
+		long first_line_start_time = lines2.get(0).getStart_time() - 2;
+		
+		last_line = adjustLastLine(last_line,first_line_start_time,this.max_srt_line_duration);
+		
 
-		long new_end = last_line.getStart_time() + this.max_srt_line_duration;
-		last_line.setEnd_time(new_end < first_line_start_time ? new_end
-				: first_line_start_time);
 
 		ret_lines.add(last_line);
 		ret_lines.addAll(lines2);
@@ -94,6 +95,40 @@ public class SrtBuilder {
 
 	}
 
+	/**
+	 * Adjust the ending time of the SrtLine passed in order to not overlap with
+	 * the next line srtLine, whose starting time is passed into next_line_start_time parameter, 
+	 * and to not be smaller than max_srt_line_duration2 passed.
+	 * @param last_line	The SrtLine to modify.
+	 * @param next_line_start_time The starting time of the next line of the srt.
+	 * @param max_srt_line_duration2 Maximum SrtLine duration.
+	 * @return The modified last_line object.
+	 */
+	public static SrtLine adjustLastLine(SrtLine last_line,
+			long next_line_start_time, long max_srt_line_duration2) {
+//TODO: write better specifications!
+		long new_possible_end = last_line.getStart_time() + max_srt_line_duration2;
+		
+		long new_end_line;
+		
+		if(new_possible_end<next_line_start_time)
+			new_end_line = new_possible_end;
+		else new_end_line = next_line_start_time;
+				
+		last_line.setEnd_time(new_end_line);
+		
+		return last_line;
+	}
+
+	/**
+	 * SrtBuilder constructor which takes some parameters. All the time values are intended in milliseconds.
+	 * @param max_silent_threshold Maximum Silent interval possible inside an srtline.
+	 * @param max_characters_length	Maximum number of characters inside an srtline.
+	 * @param max_srt_line_duration	Amount of time of duration that an srtline
+	 *  is displayed in the case that there is not any following srtline 
+	 *  whose time interval could overlap. 
+	 *  Because in that case is used as ending time 2 millisecond before the following srtline start time.
+	 */
 	public SrtBuilder(long max_silent_threshold, int max_characters_length,
 			long max_srt_line_duration) {
 		super();

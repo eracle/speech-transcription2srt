@@ -9,7 +9,7 @@ import org.junit.Test;
 
 public class SplitTest {
 
-	private List<TranscriptedWord> getList() {
+	private List<TranscriptedWord> get_ciao_come_va_List() {
 
 		List<TranscriptedWord> wl = new ArrayList<TranscriptedWord>();
 		wl.add(new TranscriptedWord("ciao", 10l, 20l));
@@ -29,7 +29,7 @@ public class SplitTest {
 	@Test
 	public void testSplit() {
 
-		List<TranscriptedWord> wl = this.getList();
+		List<TranscriptedWord> wl = this.get_ciao_come_va_List();
 
 		Split s = new Split(wl);
 
@@ -39,7 +39,7 @@ public class SplitTest {
 	@Test
 	public void testGetLeft() {
 
-		List<TranscriptedWord> wl = this.getList();
+		List<TranscriptedWord> wl = this.get_ciao_come_va_List();
 
 		Split s = new Split(wl);
 
@@ -52,7 +52,7 @@ public class SplitTest {
 
 	@Test
 	public void testGetRight() {
-		List<TranscriptedWord> wl = this.getList();
+		List<TranscriptedWord> wl = this.get_ciao_come_va_List();
 
 		Split s = new Split(wl);
 
@@ -69,7 +69,7 @@ public class SplitTest {
 	@Test
 	public void testGetMaxSilentInterval() {
 
-		List<TranscriptedWord> wl = this.getList();
+		List<TranscriptedWord> wl = this.get_ciao_come_va_List();
 
 		Split s = new Split(wl);
 
