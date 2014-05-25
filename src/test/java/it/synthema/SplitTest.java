@@ -26,6 +26,17 @@ public class SplitTest {
 		return wl;
 	}
 
+	private List<TranscriptedWord> get_empty_List() {
+		List<TranscriptedWord> wl = new ArrayList<TranscriptedWord>();
+		return wl;
+	}
+	
+	private List<TranscriptedWord> get_single_element_List() {
+		List<TranscriptedWord> wl = new ArrayList<TranscriptedWord>();
+		wl.add(new TranscriptedWord("ciao", 0l, 20l));
+		return wl;
+	}
+	
 	@Test
 	public void testSplit() {
 
@@ -35,6 +46,28 @@ public class SplitTest {
 
 		assertNotNull(s);
 	}
+	
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testGetLeft_empty_case() {
+		List<TranscriptedWord> wl = this.get_empty_List();
+
+		Split s = new Split(wl);
+
+		assertNotNull(s);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testGetLeft_single_case() {
+		List<TranscriptedWord> wl = this.get_single_element_List();
+
+		Split s = new Split(wl);
+
+		assertNotNull(s);
+	}
+	
+	
+	
 
 	@Test
 	public void testGetLeft() {
@@ -50,6 +83,38 @@ public class SplitTest {
 		assertTrue(left.get(2).word.equals("va"));
 	}
 
+	@Test(expected=IllegalArgumentException.class)
+	public void testGetRight_empty_case() {
+		
+		List<TranscriptedWord> wl = this.get_empty_List();
+
+		Split s = new Split(wl);
+
+		List<TranscriptedWord> left = s.getLeft();
+
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testGetRight_single_case() {
+		
+		List<TranscriptedWord> wl = this.get_single_element_List();
+
+		Split s = new Split(wl);
+
+		List<TranscriptedWord> left = s.getLeft();
+
+		
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testGetMaxSilentInterval_empty_case() {
+		List<TranscriptedWord> wl = this.get_empty_List();
+
+		Split s = new Split(wl);
+
+		SilentInterval si = s.getMaxSilentInterval();
+	}
+	
 	@Test
 	public void testGetRight() {
 		List<TranscriptedWord> wl = this.get_ciao_come_va_List();
@@ -57,7 +122,7 @@ public class SplitTest {
 		Split s = new Split(wl);
 
 		List<TranscriptedWord> left = s.getRight();
-
+		assertTrue("Size not 5 but: "+left.size(),left.size()==5);
 		assertTrue(left.get(0).word.equals("bene"));
 		assertTrue(left.get(1).word.equals("grazie"));
 		assertTrue(left.get(2).word.equals("e"));

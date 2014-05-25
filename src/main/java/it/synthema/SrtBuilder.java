@@ -32,6 +32,11 @@ public class SrtBuilder {
 	public Srt build(List<TranscriptedWord> list) {
 		// log.debug("Start Building");
 
+		//recursion base case.
+		//if the list is composed by only one word I can't split more.
+		if(list.size()==1)
+			return new Srt(list);
+		
 		// I split the transcription sequence if
 		// I find an enough big silent interval
 
@@ -96,9 +101,11 @@ public class SrtBuilder {
 	}
 
 	/**
-	 * Adjust the ending time of the SrtLine passed in order to not overlap with
-	 * the next line srtLine, whose starting time is passed into next_line_start_time parameter, 
-	 * and to not be smaller than max_srt_line_duration2 passed.
+	 * Modifies the ending time of the SrtLine passed as a parameter and returns it.
+	 * The starting time of the next srtline is passed as parameter.
+	 * The following contraints are followed:<br> 
+	 * - The result strline will not overlap with the next line srtLine. <br>
+	 * - The duration of the srtline will not exceed the max_srt_line_duration2 passed.
 	 * @param last_line	The SrtLine to modify.
 	 * @param next_line_start_time The starting time of the next line of the srt.
 	 * @param max_srt_line_duration2 Maximum SrtLine duration.
@@ -124,10 +131,8 @@ public class SrtBuilder {
 	 * SrtBuilder constructor which takes some parameters. All the time values are intended in milliseconds.
 	 * @param max_silent_threshold Maximum Silent interval possible inside an srtline.
 	 * @param max_characters_length	Maximum number of characters inside an srtline.
-	 * @param max_srt_line_duration	Amount of time of duration that an srtline
-	 *  is displayed in the case that there is not any following srtline 
-	 *  whose time interval could overlap. 
-	 *  Because in that case is used as ending time 2 millisecond before the following srtline start time.
+	 * @param max_srt_line_duration	Duration of an srtline if there is not an enough close following srtline, otherwise, as ending time is used 
+	 * 2 millisecond before the start time of the following srtline.
 	 */
 	public SrtBuilder(long max_silent_threshold, int max_characters_length,
 			long max_srt_line_duration) {

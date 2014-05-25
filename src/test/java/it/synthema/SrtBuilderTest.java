@@ -13,9 +13,16 @@ public class SrtBuilderTest {
 	public void testBuild() {
 		List<TranscriptedWord> st = gettestlist();
 
-		SrtBuilder builder = new SrtBuilder(0,50,40l);
-		System.out.println(builder.build(st));
+		SrtBuilder builder = new SrtBuilder(10,50,40l);
+		Srt out = builder.build(st);
+		System.out.println(out);
 	}
+	
+	@Test
+	public void testBuild_empty_case() {
+		fail("not yet impl");
+	}
+	
 	
 	@Test
 	public void testmerge_iterative_case() {
@@ -35,7 +42,7 @@ public class SrtBuilderTest {
 		Srt srt2 = new Srt(lines2);
 		
 
-		SrtBuilder builder = new SrtBuilder(0,100,70);
+		SrtBuilder builder = new SrtBuilder(100,100,20);
 		
 		Srt result = builder.merge(srt1, srt2);
 		
@@ -50,8 +57,14 @@ public class SrtBuilderTest {
 		assertNotNull(result.getLines().get(2));
 		assertNotNull(result.getLines().get(3));
 
-		//TODO: check if the ending time of line 2 must be 88
-		System.out.println(result);
+		assertTrue(result.getLines().get(1).getEnd_time()==43);
+
+		
+		SrtBuilder builder2 = new SrtBuilder(100,100,66);
+		Srt res2 = builder2.merge(srt1,srt2);
+		assertTrue(res2.getLines().get(1).getEnd_time()==88);
+		
+	//	System.out.println(result);
 	}
 
 
@@ -116,6 +129,13 @@ public class SrtBuilderTest {
 
 		st.add(new TranscriptedWord("Fine", 60l, 70l));
 		st.add(new TranscriptedWord("Thanks", 72l, 80l));
+		
+
+		st.add(new TranscriptedWord("I", 110l, 120l));
+		st.add(new TranscriptedWord("am", 125l, 160l));
+		st.add(new TranscriptedWord("eating", 170l, 190l));
+		
+		
 		return st;
 	}
 	

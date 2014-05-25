@@ -9,10 +9,10 @@ import java.util.List;
  *
  */
 public class Srt {
-	
+
 
 	private List<SrtLine> lines;
-	
+
 	/**
 	 * Basic constructor which generates an Srt composed only by an unique SrtLine.
 	 * It assumes that the transcriptionWordList is composed by a small amount of characters.
@@ -27,9 +27,14 @@ public class Srt {
 		StringBuilder s = new StringBuilder();
 		int i = 0;
 		for (TranscriptedWord word : list) {
-			if(i<half)
+			if(i<half){
 				f.append(word.word);
-			else s.append(word.word);
+				f.append(" ");
+			}
+			else{ 
+				s.append(word.word);
+				s.append(" ");
+			}
 			i++;	
 		}
 		this.lines = new ArrayList<SrtLine>();
@@ -57,9 +62,9 @@ public class Srt {
 			i++;
 		}
 		return ret.toString();
-		
+
 	}
 
 
-	
+
 }

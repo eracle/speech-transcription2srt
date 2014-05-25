@@ -6,7 +6,8 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 /**
- * Represent the split made from a transcription word sequence. It contains:<br>
+ * Represent the split of a sequence of words.
+ * It contains:<br>
  * - max silent interval;<br>
  * - the sequence of transcripted words before the max silent interval (aka left
  * part);<br>
@@ -30,17 +31,18 @@ public class Split {
 	private List<TranscriptedWord> all_words;
 
 	/**
-	 * Constructor where the max interval is identified.
+	 * Constructor where the max interval is identified. A split can be performed only if there are almost two transcripted words.
 	 * 
 	 * @param list
 	 */
 	public Split(List<TranscriptedWord> list) {
 
-		log.debug("Calling the Split constructor");
+		if(list.size()<2)
+			throw new IllegalArgumentException("Cannot split a list of transcripted word smaller than 2 elements");
+		//log.debug("Calling the Split constructor");
 		
 		this.all_words = list;
 		this.left = new ArrayList<TranscriptedWord>();
-
 		this.right = null;
 
 		/*
