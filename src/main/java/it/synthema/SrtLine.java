@@ -12,13 +12,22 @@ package it.synthema;
  */
 public class SrtLine {
 	
-	private String firstLine;
+	
 	public long getStart_time() {
 		return start_time;
 	}
 
 	public void setEnd_time(long end_time) {
 		this.end_time = end_time;
+	}
+
+	private String firstLine;
+	public String getFirstLine() {
+		return firstLine;
+	}
+
+	public String getSecondLine() {
+		return secondLine;
 	}
 
 	private String secondLine;
@@ -39,9 +48,19 @@ public class SrtLine {
 		return end_time;
 	}
 
+
+	//TODO: write the code that prints the time part
 	@Override
 	public String toString() {
-		return "SrtLine [firstLine=" + firstLine + ", secondLine=" + secondLine
-				+ ", start_time=" + start_time + ", end_time=" + end_time + "]";
+		StringBuilder b = new StringBuilder();
+		b.append("time:\n");
+		b.append(this.getFirstLine());
+		b.append("\n");
+		if(this.getSecondLine()!=null || !this.getSecondLine().equals("")){
+			b.append(this.getSecondLine());
+			b.append("\n");
+			}
+		return b.toString();
 	}
+	
 }

@@ -14,8 +14,10 @@ public class SrtBuilderTest {
 		List<TranscriptedWord> st = gettestlist();
 
 		SrtBuilder builder = new SrtBuilder(10,50,40l);
+		assertNotNull(builder);
 		Srt out = builder.build(st);
-		System.out.println(out);
+		assertNotNull(out);
+		//System.out.println(out);
 	}
 	
 	@Test
