@@ -19,9 +19,9 @@ import org.apache.log4j.Logger;
  */
 public class Split {
 
-	private final static Logger log = Logger.getLogger(Split.class.getName());
+	//private final static Logger log = Logger.getLogger(Split.class.getName());
 
-	
+
 	private SilentInterval max_silent_interval;
 
 	private List<TranscriptedWord> left;
@@ -40,7 +40,7 @@ public class Split {
 		if(list.size()<2)
 			throw new IllegalArgumentException("Cannot split a list of transcripted word smaller than 2 elements");
 		//log.debug("Calling the Split constructor");
-		
+
 		this.all_words = list;
 		this.left = new ArrayList<TranscriptedWord>();
 		this.right = null;
@@ -53,16 +53,20 @@ public class Split {
 
 		SilentInterval max = null;
 
+
+
 		TranscriptedWord previous = null;
 
 		// I iterate over the whole list passed
-		for (TranscriptedWord word : list) {
-
+		for (int i = 0; i<list.size();i++) {
+			TranscriptedWord word = list.get(i);
 			// if is not the first word
 			if (previous != null) {
 				tmp_left.add(previous);
 
-				SilentInterval temp = new SilentInterval(previous, word);
+				SilentInterval temp = new SilentInterval(previous, word,Math.abs(
+						(((double)list.size())/2.0)-((double)i))
+						);
 				if (max == null) {
 					max = temp;
 					this.left.addAll(tmp_left);

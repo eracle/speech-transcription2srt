@@ -17,12 +17,29 @@ public class Srt {
 	 * Basic constructor which generates an Srt composed only by an unique SrtLine.
 	 * @param list
 	 */
-	public Srt(List<TranscriptedWord> list) {
-		/* More advanced implementation:
+	public Srt(List<TranscriptedWord> list) {		
+		//Version 2.0
+		//This constructor creates only one line
+		StringBuilder first = new StringBuilder();
+		for (int i = 0 ; i< list.size();i++) {
+			TranscriptedWord transcriptedWord = list.get(i);
+			first.append(transcriptedWord.word);
+			if(i!=list.size()-1)
+				first.append(" ");
+		}
+		
+		this.lines = new ArrayList<SrtLine>();
+		this.lines.add(new SrtLine(first.toString(),
+				null,list.get(0).start_time,list.get(list.size()-1).end_time));
+		
+		/* 
+		 * Version 1.1
+		 * More advanced implementation:
 		 * Splits into two strings the list passed 
 		 * by minimizing their size difference in
 		 * terms of number of characters.
 		*/
+		/*
 		int total_size = SrtBuilder.getCharacterNumber(list);
 		int half_size = total_size/2;
 		
@@ -58,6 +75,10 @@ public class Srt {
 		this.lines.add(new SrtLine(first.toString(),
 				second.toString(),list.get(0).start_time,list.get(list.size()-1).end_time));
 	
+	
+		 */
+		
+		//version 1.0:
 		//OLD IMPLEMENTATION:
 		/*
 		//basic implementation that splits

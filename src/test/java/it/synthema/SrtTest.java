@@ -31,8 +31,12 @@ public class SrtTest {
 		//System.out.println(srt.toString());
 		
 		assertNotNull(lines.get(0));
-		assertTrue(lines.get(0).getFirstLine().equals("ciao come va bene"));
-		assertTrue(lines.get(0).getSecondLine().equals("grazie e tu"));
+		//older version than 2.0
+		//assertTrue(lines.get(0).getFirstLine().equals("ciao come va bene"));
+		//assertTrue(lines.get(0).getSecondLine().equals("grazie e tu"));
+		
+		assertTrue(lines.get(0).getFirstLine().equals("ciao come va bene grazie e tu"));
+		assertNull(lines.get(0).getSecondLine());
 	
 	}
 		
@@ -48,8 +52,12 @@ public class SrtTest {
 		assertTrue(lines2.size()==1);
 		assertNotNull(lines2.get(0));
 		assertTrue(lines2.get(0).getFirstLine().equals("ciao"));
+		assertNull(lines2.get(0).getSecondLine());
+		//version older than 2.0
+		/*
 		assertNotNull(lines2.get(0).getSecondLine());
 		assertTrue(lines2.get(0).getSecondLine().equals(""));
+		*/
 		assertTrue(lines2.get(0).getStart_time()==10);
 		assertTrue(lines2.get(0).getEnd_time()==20);
 	}

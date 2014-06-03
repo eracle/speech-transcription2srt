@@ -17,8 +17,7 @@ public class TranscriptedWord {
 	
 	@Override
 	public String toString() {
-		return "TranscriptedWord [word=" + word + ", start_time=" + start_time
-				+ ", end_time=" + end_time + "]";
+		return this.word+"\t"+ start_time + "\t"+ end_time+"\n";
 	}
 
 	public TranscriptedWord(String word, long start_time, long end_time) {
