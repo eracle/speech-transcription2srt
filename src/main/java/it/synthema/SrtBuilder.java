@@ -32,6 +32,9 @@ public class SrtBuilder {
 	public Srt build(List<TranscriptedWord> list) {
 		// log.debug("Start Building");
 
+		if(list.size()==0)
+			throw new IllegalArgumentException("Cannot create an srt if the transcription list is empty");
+		
 		//recursion base case.
 		//if the list is composed by only one word I can't split more.
 		if(list.size()==1)

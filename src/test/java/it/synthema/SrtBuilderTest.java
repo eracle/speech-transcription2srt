@@ -15,12 +15,17 @@ public class SrtBuilderTest {
 
 		SrtBuilder builder = new SrtBuilder(10,50,40l);
 		Srt out = builder.build(st);
-		System.out.println(out);
+		//System.out.println(out);
 	}
 	
-	@Test
+
+	@Test(expected=IllegalArgumentException.class)
 	public void testBuild_empty_case() {
-		fail("not yet impl");
+		List<TranscriptedWord> st = new ArrayList<>();
+
+		SrtBuilder builder = new SrtBuilder(10,50,40l);
+		Srt out = builder.build(st);
+
 	}
 	
 	
@@ -100,7 +105,23 @@ public class SrtBuilderTest {
 	
 	@Test
 	public void testmerge_base_case() {
-		fail("Not yet implemented");
+		ArrayList<SrtLine> lines1 = new ArrayList<>();
+		SrtLine srtline1 = new SrtLine("Ciao","bella",0,100);
+		lines1.add(srtline1);
+		Srt srt1 = new Srt(lines1);
+		
+		ArrayList<SrtLine> lines2 = new ArrayList<>();
+		SrtLine srtline2 = new SrtLine("Come","va",110,200);
+		lines2.add(srtline2);
+		Srt srt2 = new Srt(lines2);
+		
+		SrtBuilder builder = new SrtBuilder(100,100,20);
+		
+		Srt result = builder.merge(srt1, srt2);	
+		//TODO: non dovrebbe ssere così:
+		// l'implementazione deve tener conto della durata del srtline/srt
+		//SrtLine [firstLine=Ciao, secondLine=bella, start_time=0, end_time=20]
+		System.out.println(result);
 	}
 
 	@Test
@@ -111,12 +132,14 @@ public class SrtBuilderTest {
 	
 	@Test
 	public void testSrtBuilder() {
-		fail("Not yet implemented");
+		SrtBuilder builder = new SrtBuilder(10,50,40l);
+		assertNotNull(builder);
 	}
 	
 	@Test
-	public void testSrtBuilder_emptycase() {
-		fail("Not yet implemented");
+	public void testSrtBuilder_zerocase() {
+		SrtBuilder builder = new SrtBuilder(0,0,0);
+		assertNotNull(builder);
 	}
 
 	private List<TranscriptedWord> gettestlist() {
