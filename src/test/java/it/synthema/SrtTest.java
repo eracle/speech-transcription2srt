@@ -9,6 +9,8 @@ import org.junit.Test;
 
 public class SrtTest {
 
+	
+	
 	@Test
 	public void testSrtListOfTranscriptedWord_ciao_come_va() {
 		List<TranscriptedWord> list = new ArrayList<>();
@@ -62,6 +64,7 @@ public class SrtTest {
 		assertNotNull(srt.toString());
 		assertTrue(srt.toString().length()==0);
 		
+
 	}
 
 
@@ -76,7 +79,7 @@ public class SrtTest {
 	private Srt get_single_line_mock(){
 		ArrayList<SrtLine> a = new ArrayList<SrtLine>();
 		
-		a.add(new SrtLine("This subtitle is a","test.", 0l, 1000l));
+		a.add(new SrtLine("This subtitle is a","test .", 0l, 1000l));
 		
 		return new Srt(a);
 		

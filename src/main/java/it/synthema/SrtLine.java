@@ -12,7 +12,17 @@ package it.synthema;
  */
 public class SrtLine {
 	
-	
+
+	public String getFirstLine() {
+		return firstLine;
+	}
+
+	public String getSecondLine() {
+		return secondLine;
+	}
+
+	private String firstLine;
+
 	public long getStart_time() {
 		return start_time;
 	}
